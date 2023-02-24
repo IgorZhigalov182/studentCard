@@ -1,24 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const FirstPage = () => {
+  const [data, setData] = useState({});
+  const history = useHistory();
+
+  useEffect(() => {
+    setData(localStorage.getItem('user'));
+  }, []);
+
+  const handleClick = () => {
+    history.push('/signup');
+  };
+
   return (
-    <>
+    <div style={{ marginLeft: '200px' }}>
       <h1>Карточка студента</h1>
-      <h3>нет данных</h3>
+      <h4>нет данных</h4>
 
       <div>
         {localStorage.length === 0 ? (
           <>
-            <Link to="/signup">
-              <button>Добавить </button>
-            </Link>
+            <button className="btn btn-primary" onClick={handleClick}>
+              Добавить
+            </button>
           </>
         ) : (
           <h1>{Object.keys(localStorage)}</h1>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

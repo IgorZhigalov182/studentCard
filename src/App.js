@@ -7,8 +7,7 @@ import SecondPage from './component/SecondPage';
 function App() {
   return (
     <>
-      <NavBar />
-      <Route path="/signup" render={SecondPage} />
+      <Route path="/signup" component={SecondPage} />
       <Route path="/" component={FirstPage} exact />
     </>
   );
