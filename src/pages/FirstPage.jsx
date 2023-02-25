@@ -5,7 +5,7 @@ const FirstPage = () => {
   const [data, setData] = useState({});
   const history = useHistory();
 
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     setData(JSON.parse(localStorage.getItem('user')));
