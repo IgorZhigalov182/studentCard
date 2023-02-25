@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link, Router, Route, Routes } from 'react-router-dom';
-import FirstPage from './component/FirstPage';
-import NavBar from './component/NavBar';
-import SecondPage from './component/SecondPage';
+import FirstPage from './pages/FirstPage';
+import SecondPage from './pages/SecondPage';
 
 function App() {
   return (

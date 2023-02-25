@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextField = ({ label, value, onChange }) => {
+const TextField = ({ label, value, onChange, name }) => {
   const handleChange = ({ target }) => {
     onChange({ name: target.name, value: target.value });
   };
@@ -8,10 +8,17 @@ const TextField = ({ label, value, onChange }) => {
     <>
       <form>
         <div className="mb-3">
-          <label htmlFor="secondName" className="form-label">
+          <label htmlFor={name} className="form-label">
             {label}
           </label>
-          <input onChange={handleChange} type="name" className="form-control" id="secondName" />
+          <input
+            onChange={handleChange}
+            type="text"
+            className="form-control"
+            id={name}
+            value={value}
+            name={name}
+          />
         </div>
       </form>
     </>

@@ -5,8 +5,10 @@ const FirstPage = () => {
   const [data, setData] = useState({});
   const history = useHistory();
 
+  console.log(data);
+
   useEffect(() => {
-    setData(localStorage.getItem('user'));
+    setData(JSON.parse(localStorage.getItem('user')));
   }, []);
 
   const handleClick = () => {
@@ -16,8 +18,6 @@ const FirstPage = () => {
   return (
     <div style={{ marginLeft: '200px' }}>
       <h1>Карточка студента</h1>
-      <h4>нет данных</h4>
-
       <div>
         {localStorage.length === 0 ? (
           <>
@@ -26,7 +26,16 @@ const FirstPage = () => {
             </button>
           </>
         ) : (
-          <h1>{Object.keys(localStorage)}</h1>
+          <>
+            {/* <h1>{Object.keys(localStorage)}</h1> */}
+            <p>Имя: {data.name}</p>
+            <p>Фамилия: {data.secondName}</p>
+            <p>Год рождения: {data.birthyear}</p>
+            <p>Портфолио: {data.portfolio}</p>
+            <button className="btn btn-primary" onClick={handleClick}>
+              Редактировать
+            </button>
+          </>
         )}
       </div>
     </div>
