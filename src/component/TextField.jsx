@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextField = ({ label, value, onChange, name }) => {
+const TextField = ({ label, value, onChange, name, defaultValue }) => {
   const handleChange = ({ target }) => {
     onChange({ name: target.name, value: target.value });
   };
@@ -18,6 +18,7 @@ const TextField = ({ label, value, onChange, name }) => {
             id={name}
             value={value}
             name={name}
+            defaultValue={defaultValue}
           />
         </div>
       </form>

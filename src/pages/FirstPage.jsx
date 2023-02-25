@@ -18,6 +18,7 @@ const FirstPage = () => {
   return (
     <div style={{ marginLeft: '200px' }}>
       <h1>Карточка студента</h1>
+      {!localStorage.getItem('user') ? <p>нет данных</p> : ''}
       <div>
         {localStorage.length === 0 ? (
           <>
@@ -27,7 +28,6 @@ const FirstPage = () => {
           </>
         ) : (
           <>
-            {/* <h1>{Object.keys(localStorage)}</h1> */}
             <p>Имя: {data.name}</p>
             <p>Фамилия: {data.secondName}</p>
             <p>Год рождения: {data.birthyear}</p>

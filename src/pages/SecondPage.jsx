@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import TextField from '../component/TextField';
 import NumberField from '../component/NumberField';
 import LinkField from '../component/LinkField';
@@ -6,14 +6,18 @@ import { useHistory } from 'react-router';
 
 const SecondPage = () => {
   const history = useHistory();
+  const dataLocalStorage = JSON.parse(localStorage.getItem('user'));
+  const [data, setData] = useState(dataLocalStorage);
 
-  const [data, setData] = useState({});
-
-  const handleChange = (target) => {
+  const handleChange = useCallback((target) => {
     setData((prevState) => ({
       ...prevState,
       [target.name]: target.value,
     }));
+  });
+
+  const handleBack = () => {
+    history.goBack();
   };
 
   const handleClick = () => {
@@ -36,6 +40,7 @@ const SecondPage = () => {
         name="secondName"
         value={data.secondName}
         onChange={handleChange}
+        // defaultValue={data.name}
       />
       <NumberField
         label="Год рождения"
@@ -51,9 +56,14 @@ const SecondPage = () => {
       />
 
       {localStorage.getItem('user') ? (
-        <button className="btn btn-primary" onClick={handleClick}>
-          Редактировать
-        </button>
+        <div>
+          <button className="btn btn-secondary" onClick={handleBack}>
+            Назад
+          </button>
+          <button className="btn btn-primary m-3" onClick={handleClick}>
+            Редактировать
+          </button>
+        </div>
       ) : (
         <button className="btn btn-primary" onClick={handleClick}>
           Создать
